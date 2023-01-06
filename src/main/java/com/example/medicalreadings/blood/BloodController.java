@@ -14,11 +14,12 @@ public class BloodController {
 
     @GetMapping
     public List<Blood> getBloodReadings() {
-        return service.getAllStudents();
+        return service.getAllBloodReadings();
     }
 
     @PostMapping
-    public void addBloodReading(@RequestBody Blood blood) {
-        service.addBloodReading(blood);
+    public void addBloodReading(@RequestBody Blood bloodReading) {
+        service.addBloodReading(bloodReading);
     }
+
 }

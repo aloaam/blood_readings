@@ -12,3 +12,11 @@ const checkStatus = (response) => {
 
 export const getAllBloodReadings = () =>
   fetch("api/v1/blood-readings").then(checkStatus);
+
+
+  export const addNewBloodReading = bloodReading => 
+  fetch("api/v1/blood-readings", {
+    headers: {"ContentType": "application/json"},
+    method: 'POST',
+    body: JSON.stringify(bloodReading)
+  })

@@ -1,14 +1,15 @@
 import { useState, useEffect } from "react";
 import { getAllBloodReadings } from "./client";
-import { Layout, Menu, Breadcrumb, Table } from "antd";
+import { Layout, Menu, Breadcrumb, Table, Button } from "antd";
 import {
   DesktopOutlined,
   PieChartOutlined,
   FileOutlined,
   TeamOutlined,
   UserOutlined,
+  PlusOutlined
 } from "@ant-design/icons";
-
+import StudentDrawerForm from "./StudentDrawerForm";
 import "./App.css";
 
 const { Header, Content, Footer, Sider } = Layout;
@@ -40,6 +41,7 @@ const columns = [
 function App() {
   const [readings, setReadings] = useState([]);
   const [collapsed, setCollapsed] = useState(false);
+  const [showDrawer, setShowDrawer] = useState(false);
 
   const fetchReadings = () =>
     getAllBloodReadings()
@@ -59,14 +61,24 @@ function App() {
       return "No data available";
     }
     return (
+      <>
+      <StudentDrawerForm 
+        showDrawer={showDrawer}
+        setShowDrawer={setShowDrawer}
+      />
       <Table
         dataSource={readings}
         columns={columns}
-        title={() => "Blood Readings"}
+        title={() => 
+        <Button onClick={() => setShowDrawer(!showDrawer)} type="primary" shape="round" icon={<PlusOutlined />} size="small">
+          Add New Blood Reading
+        </Button>}
+        footer={() => "Blood Readings"}
         pagination={{ pageSize: 50 }}
         // scroll={{ y: 240 }}
         rowKey={(readings) => readings.id}
       />
+      </>
     );
   };
 

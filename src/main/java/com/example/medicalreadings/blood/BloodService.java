@@ -11,11 +11,12 @@ public class BloodService {
 
     private final BloodRepository bloodRepository;
 
-    public List<Blood> getAllStudents() {
+    public List<Blood> getAllBloodReadings() {
         return bloodRepository.findAll();
     }
 
     public void addBloodReading(Blood bloodReading) {
         bloodRepository.save(bloodReading);
     }
+
 }
