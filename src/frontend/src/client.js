@@ -14,9 +14,14 @@ export const getAllBloodReadings = () =>
   fetch("api/v1/blood-readings").then(checkStatus);
 
 
-  export const addNewBloodReading = bloodReading => 
-  fetch("api/v1/blood-readings", {
-    headers: {"ContentType": "application/json"},
-    method: 'POST',
-    body: JSON.stringify(bloodReading)
-  })
+  export const addNewBloodReading = bloodReading => {
+
+    var payLoad = JSON.stringify(bloodReading)
+    console.log("Saving into db the following data: " + payLoad)
+    return fetch("api/v1/blood-readings", {
+      headers: {"Content-Type": "application/json"},
+      method: 'POST',
+      body: payLoad
+    })  
+  }
+  

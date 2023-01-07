@@ -8,8 +8,7 @@ function StudentDrawerForm({showDrawer, setShowDrawer}) {
 
     const onFinish = values => {
         alert(JSON.stringify(values, null, 2));
-        values.date = values.date.toIsoString()
-        console.log(JSON.stringify(values, null, 2))
+        // console.log(JSON.stringify(values, null, 2))
         addNewBloodReading(values)
     };
 
