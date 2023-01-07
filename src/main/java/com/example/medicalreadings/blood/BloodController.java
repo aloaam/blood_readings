@@ -22,4 +22,8 @@ public class BloodController {
         service.addBloodReading(bloodReading);
     }
 
+    @DeleteMapping(path = "{bloodReadingId}")
+    public void deleteBloodReading(@PathVariable Long bloodReadingId) {
+        service.deleteBloodReading(bloodReadingId);
+    }
 }

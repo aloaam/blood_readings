@@ -19,4 +19,8 @@ public class BloodService {
         bloodRepository.save(bloodReading);
     }
 
+    public void deleteBloodReading(Long bloodReadingId) {
+        bloodRepository.deleteById(bloodReadingId);
+    }
+
 }

@@ -1,5 +1,6 @@
 import {Drawer,     Col, Select, Form, Row, Button, DatePicker, InputNumber} from 'antd';
 import { addNewBloodReading } from './client'; 
+import {successNotification, errorNotification} from "./notification";
 
 const {Option} = Select;
 
@@ -7,9 +8,12 @@ function StudentDrawerForm({showDrawer, setShowDrawer}) {
     const onCLose = () => setShowDrawer(false);
 
     const onFinish = values => {
-        alert(JSON.stringify(values, null, 2));
-        // console.log(JSON.stringify(values, null, 2))
         addNewBloodReading(values)
+        .then(() => {
+            console.log("Blood reading added")
+            successNotification("Blood Reading Added","The blood reading was successfully added to the DB. Please reload the page.")
+            onCLose()
+        })
     };
 
     const onFinishFailed = errorInfo => {
